@@ -40,7 +40,7 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new SimultaneousSelectionsort<>();
+		this.implementation = new InsertionSort<>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {
@@ -82,7 +82,7 @@ public class StudentSortingTest {
 		}
 		implementation.sort(array, leftIndex, rigthIndex);
 		
-		if (leftIndex >=0 && rigthIndex < array.length) Arrays.sort(copy1, leftIndex, rigthIndex+1);
+		if (leftIndex >=0 && rigthIndex < array.length && rigthIndex >= leftIndex) Arrays.sort(copy1, leftIndex, rigthIndex+1);
 		Assert.assertArrayEquals(copy1, array);
 	}
 
@@ -142,6 +142,8 @@ public class StudentSortingTest {
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, -1, 7);
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, 0, 8);
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, -1, 8);
+		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, 6, 4);
+		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, 7, 0);
 	}
 
 	// MÉTODOS QUE OS ALUNOS PODEM CRIAR
