@@ -40,7 +40,7 @@ public class StudentSortingTest {
 	 * do aluno
 	 */
 	private void getImplementation() {
-		this.implementation = new InsertionSort<>();
+		this.implementation = new SimultaneousSelectionsort<>();
 	}
 
 	public void populaVetorTamanhoPar(Integer[] arrayPadrao) {

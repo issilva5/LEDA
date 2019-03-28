@@ -14,7 +14,7 @@ public class InsertionSort<T extends Comparable<T>> extends AbstractSorting<T> {
 	@Override
 	public void sort(T[] array, int leftIndex, int rightIndex) {
 		
-		if (array != null && leftIndex >=0 && rightIndex < array.length) {
+		if (this.verificaLimites(array, leftIndex, rightIndex)) {
 		
 			for (int i = leftIndex + 1; i <= rightIndex; i++) {
 	
@@ -28,6 +28,21 @@ public class InsertionSort<T extends Comparable<T>> extends AbstractSorting<T> {
 			
 		}
 
+	}
+	
+	private boolean verificaLimites(T[] array, int leftIndex, int rightIndex) {
+		
+		boolean result = true;
+		
+		if (array == null) {
+			result = false;
+		} else if (leftIndex < 0 || leftIndex > rightIndex) {
+			result = false;
+		} else if (rightIndex >= array.length || rightIndex < leftIndex) {
+			result = false;
+		}
+		
+		return result;
 	}
 
 }
