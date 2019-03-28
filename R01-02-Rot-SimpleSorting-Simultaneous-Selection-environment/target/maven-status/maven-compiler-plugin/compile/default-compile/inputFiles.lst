@@ -1,7 +1,7 @@
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/SelectionSort.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/variationsOfSelectionsort/SimultaneousSelectionsort.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/InsertionSort.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/AbstractSorting.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/Sorting.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/BubbleSort.java
-/home/italloss/Workspace/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/util/Util.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/SelectionSort.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/InsertionSort.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/variationsOfSelectionsort/SimultaneousSelectionsort.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/Sorting.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/AbstractSorting.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/sorting/simpleSorting/BubbleSort.java
+/home/itallo/git/LEDA/R01-02-Rot-SimpleSorting-Simultaneous-Selection-environment/src/main/java/util/Util.java
