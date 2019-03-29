@@ -22,7 +22,7 @@ public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<
 	
 	public void sortRecursive(T[] array) {
 		
-		sortRecursive(array, 0);
+		sortRecursive(array, 1);
 		
 	}
 	

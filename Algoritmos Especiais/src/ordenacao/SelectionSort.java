@@ -30,7 +30,7 @@ public class SelectionSort<T extends Comparable<T>> implements SortingAlgorithm<
 	
 	private void sortRecursive(T[] array, int i) {
 		
-		if(i < array.length) {
+		if(i < array.length - 1) {
 		
 			int menorIndex = i;
 			
