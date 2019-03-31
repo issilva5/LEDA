@@ -25,7 +25,7 @@ public class MergeSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 	private void merge(T[] array, int left, int right) {
 		
 		int mid = (left + right)/2;
-		Object[] helper = new Object[array.length];
+		T[] helper = (T[]) new Comparable[array.length];
 		
 		int i = left;
 		int j = mid + 1;

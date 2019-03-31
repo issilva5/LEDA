@@ -1,21 +1,5 @@
 package ordenacao;
 
-import java.util.Arrays;
-
-/*
- * The idea of dual pivot quick sort is to take two pivots,
- * one in the left end of the array and the second, in the right end of the array.
- * 
- * The left pivot must be less than or equal to the right pivot, so we swap them if necessary.
- * 
- * Then, we begin partitioning the array into three parts:
- * in the first part, all elements will be less than the left pivot,
- * in the second part all elements will be greater or equal to the left pivot and also will be less than or equal to the right pivot,
- * and in the third part all elements will be greater than the right pivot.
- * 
- * Then, we shift the two pivots to their appropriate positions as we see in the below bar, 
- * and after that we begin quicksorting these three parts recursively, using this method.
- */
 public class DualPivotQuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 	
 	@Override
@@ -29,18 +13,90 @@ public class DualPivotQuickSort<T extends Comparable<T>> implements SortingAlgor
 		
 		if(left < right) {
 			
-			//TODO
+			int pivotLeft = left;
+			int pivotRight = right;
+			if(array[left].compareTo(array[right]) > 0) {
+				T aux = array[left];
+				array[left] = array[right];
+				array[right] = aux;
+			}
+			
+			int pivotBegin = left;
+			
+			for(int j = pivotBegin + 1; j <= right; j++) {
+				if(array[j].compareTo(array[pivotLeft]) < 0) {
+					pivotBegin++;
+					T aux = array[pivotBegin];
+					array[pivotBegin] = array[j];
+					array[j] = aux;
+				}
+			}
+			
+			if(pivotLeft != pivotBegin) {
+				T aux = array[pivotLeft];
+				array[pivotLeft] = array[pivotBegin];
+				array[pivotBegin] = aux;
+			}
+			
+			//Determinando pivotEnd
+			int pivotEnd = right;
+			
+			for(int j = pivotEnd - 1; j > pivotBegin; j--) {
+				if(array[j].compareTo(array[pivotRight]) > 0) {
+					pivotEnd--;
+					T aux = array[pivotEnd];
+					array[pivotEnd] = array[j];
+					array[j] = aux;
+				}
+			}
+			
+			if(pivotRight != pivotEnd) {
+				T aux = array[pivotRight];
+				array[pivotRight] = array[pivotEnd];
+				array[pivotEnd] = aux;
+			}
+			
+			sort(array, left, pivotBegin - 1);
+			sort(array, pivotBegin + 1, pivotEnd - 1);
+			sort(array, pivotEnd + 1, right);
 			
 		}
 		
 	}
-	
-	public static void main(String[] args) {
-		SortingAlgorithm<Integer> i = new DualPivotQuickSort<>();
-		Integer[] array = new Integer[]{-15, 11, -17, 34, 2, -1, 3, 9, 0, 17, -32};
-		i.sort(array);
-		System.out.println(Arrays.toString(array));
-	}
 
+	/*
+	for(int j = pivotBegin + 1; j <= right; j++) {
+		if(array[j].compareTo(array[pivotLeft]) < 0) {
+			pivotBegin++;
+			T aux = array[pivotBegin];
+			array[pivotBegin] = array[j];
+			array[j] = aux;
+		}
+	}
+	
+	if(pivotLeft != pivotBegin) {
+		T aux = array[pivotLeft];
+		array[pivotLeft] = array[pivotBegin];
+		array[pivotBegin] = aux;
+	}
+	
+	//Determinando pivotEnd
+	//int pivotEnd = right;
+	
+	for(int j = pivotEnd - 1; j > pivotBegin; j--) {
+		if(array[j].compareTo(array[pivotRight]) > 0) {
+			pivotEnd--;
+			T aux = array[pivotEnd];
+			array[pivotEnd] = array[j];
+			array[j] = aux;
+		}
+	}
+	
+	if(pivotRight != pivotEnd) {
+		T aux = array[pivotRight];
+		array[pivotRight] = array[pivotEnd];
+		array[pivotEnd] = aux;
+	}
+	*/
 	
 }
