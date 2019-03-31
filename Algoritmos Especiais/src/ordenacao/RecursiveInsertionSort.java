@@ -1,11 +1,18 @@
 package ordenacao;
 
-public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+public class RecursiveInsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
-	@Override
+	@Override	
 	public void sort(T[] array) {
 		
-		for(int i = 1; i < array.length; i++) {
+		sort(array, 1);
+		
+	}
+	
+	private void sort(T[] array, int i) {
+		
+		if(i < array.length) {
+		
 			int j = i;
 			while(j > 0 && array[j].compareTo(array[j-1]) < 0) {
 				T aux = (T) array[j];
@@ -14,6 +21,9 @@ public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<
 				
 				j--;
 			}
+			
+			sort(array, i+1);
+			
 		}
 		
 	}

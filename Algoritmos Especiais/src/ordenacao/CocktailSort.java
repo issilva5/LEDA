@@ -1,7 +1,5 @@
 package ordenacao;
 
-import java.util.Arrays;
-
 public class CocktailSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
 	@Override
@@ -31,13 +29,6 @@ public class CocktailSort<T extends Comparable<T>> implements SortingAlgorithm<T
 			}
 			
 		}
-	}
-	
-	public static void main(String[] args) {
-		SortingAlgorithm<Integer> i = new CocktailSort<>();
-		Integer[] array = new Integer[]{-1, 2, -7, 0, 15};
-		i.sort(array);
-		System.out.println(Arrays.toString(array));
 	}
 
 }

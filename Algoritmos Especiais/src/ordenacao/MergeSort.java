@@ -1,7 +1,5 @@
 package ordenacao;
 
-import java.util.Arrays;
-
 public class MergeSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
 	@Override
@@ -60,13 +58,6 @@ public class MergeSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 		for(i = left; i <= right; i++) {
 			array[i] = (T) helper[i];
 		}
-	}
-	
-	public static void main(String[] args) {
-		SortingAlgorithm<Integer> i = new MergeSort<>();
-		Integer[] array = new Integer[]{-15, 11, -17, 34, 2, -1, 3, 9, 0, 17, -32};
-		i.sort(array);
-		System.out.println(Arrays.toString(array));
 	}
 
 }
