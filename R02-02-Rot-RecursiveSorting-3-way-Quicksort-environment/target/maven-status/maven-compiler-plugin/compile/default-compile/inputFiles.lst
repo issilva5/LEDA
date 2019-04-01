@@ -1,6 +1,6 @@
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/util/Util.java
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/MergeSort.java
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/Sorting.java
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/AbstractSorting.java
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/QuickSort.java
-/home/italloss/Workspace/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/threeWayQuicksort/ThreeWayQuickSort.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/AbstractSorting.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/Sorting.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/threeWayQuicksort/ThreeWayQuickSort.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/MergeSort.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/sorting/divideAndConquer/QuickSort.java
+/home/itallo/git/LEDA/R02-02-Rot-RecursiveSorting-3-way-Quicksort-environment/src/main/java/util/Util.java

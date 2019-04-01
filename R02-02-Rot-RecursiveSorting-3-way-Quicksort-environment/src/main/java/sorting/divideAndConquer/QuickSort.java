@@ -19,7 +19,7 @@ public class QuickSort<T extends Comparable<T>> extends AbstractSorting<T> {
 		if (verificaLimites(array, leftIndex, rightIndex)) {
 
 			if (leftIndex < rightIndex) {
-
+				
 				int pivot = partition(array, leftIndex, rightIndex);
 				sort(array, leftIndex, pivot - 1);
 				sort(array, pivot + 1, rightIndex);
@@ -33,9 +33,9 @@ public class QuickSort<T extends Comparable<T>> extends AbstractSorting<T> {
 	private int partition(T[] array, int leftIndex, int rightIndex) {
 
 		int pivotIndex = leftIndex;
-		int pivotIterator = pivotIndex;
+		int pivotIterator = leftIndex;
 
-		for(int i = pivotIterator; i <= rightIndex; i++) {
+		for(int i = leftIndex + 1; i <= rightIndex; i++) {
 
 			if (array[i].compareTo(array[pivotIndex]) < 0) {
 

@@ -9,6 +9,7 @@ import org.junit.Test;
 import sorting.AbstractSorting;
 import sorting.divideAndConquer.MergeSort;
 import sorting.divideAndConquer.QuickSort;
+import sorting.divideAndConquer.threeWayQuicksort.ThreeWayQuickSort;
 
 public class StudentSortingTest {
 
@@ -144,6 +145,11 @@ public class StudentSortingTest {
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, -1, 8);
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, 6, 4);
 		genericTestPartial(new Integer[]{-5, -9, -3, 15, 27, 98, 1, -6}, 7, 0);
+	}
+	
+	@Test
+	public void testSort12() {
+		genericTest(new Integer[] {3, 6, 3, 5, 4, 2, 3, -1, 0, 3});
 	}
 
 	// MÉTODOS QUE OS ALUNOS PODEM CRIAR

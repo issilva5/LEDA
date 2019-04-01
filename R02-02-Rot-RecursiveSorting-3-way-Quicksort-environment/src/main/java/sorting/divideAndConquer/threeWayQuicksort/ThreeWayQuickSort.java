@@ -1,6 +1,7 @@
 package sorting.divideAndConquer.threeWayQuicksort;
 
 import sorting.AbstractSorting;
+import util.Util;
 
 public class ThreeWayQuickSort<T extends Comparable<T>> extends
 		AbstractSorting<T> {
@@ -29,7 +30,7 @@ public class ThreeWayQuickSort<T extends Comparable<T>> extends
 		if (verificaLimites(array, leftIndex, rightIndex)) {
 
 			if (leftIndex < rightIndex) {
-
+				
 				int[] pivotBounds = partition(array, leftIndex, rightIndex);
 				sort(array, leftIndex, pivotBounds[0] - 1);
 				sort(array, pivotBounds[1] + 1, rightIndex);
@@ -41,9 +42,29 @@ public class ThreeWayQuickSort<T extends Comparable<T>> extends
 	}
 
 	private int[] partition(T[] array, int leftIndex, int rightIndex) {
-
-		//TODO
-		return null;
+		
+		int pivotBegin = leftIndex;
+		int pivotEnd = rightIndex;
+		int iterator = leftIndex;
+		
+		while (iterator <= pivotEnd) {
+			
+			if (array[iterator].compareTo(array[pivotBegin]) < 0) {
+				Util.swap(array, iterator, pivotBegin);
+				pivotBegin++;
+				iterator++;
+			} else if (array[iterator].compareTo(array[pivotBegin]) > 0) {
+				Util.swap(array, iterator, pivotEnd);
+				pivotEnd--;
+			} else {
+				iterator++;
+			}
+			
+		}
+		
+		int[] pivotBounds = new int[] {pivotBegin, pivotEnd};
+		
+		return pivotBounds;
 
 	}
 
