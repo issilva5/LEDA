@@ -1,4 +1,4 @@
-package selection.recursivo;
+package selection_recursivo;
 
 import java.util.Arrays;
 import java.util.Scanner;

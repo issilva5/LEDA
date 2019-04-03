@@ -1,5 +1,4 @@
-
-package insertion.sort.recursivo;
+package insere_ordenado_ultimo;
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -10,36 +9,35 @@ public class Solucao {
 		Scanner sc = new Scanner(System.in);
 		String line = sc.nextLine();
 		int[] array = getArrayInteiros(line);
-		sortRecursive(array, 1);
+		insereOrdenadoPrimeiro(array);
+		System.out.println(Arrays.toString(array));
+		sc.close();
 	}
 	
-	public static void swap(int[] array, int i, int j) {
+	private static void insereOrdenadoPrimeiro(int[] array) {
+		
+		int i = array.length - 1;
+		int j = i - 1;
+		
+		while(j > -1 && array[i] < array[j]) {
+			swap(array, i, j);
+			i--;
+			j--;
+		}
+		
+	}
+
+	private static void swap(int[] array, int i, int j) {
 		int aux = array[i];
 		array[i] = array[j];
 		array[j] = aux;
 	}
 	
-	public static int[] getArrayInteiros(String arrayString) {
+	private static int[] getArrayInteiros(String arrayString) {
 		String[] aux = arrayString.split(" ");
 		int[] meuArray = new int[aux.length];
 		for(int i = 0; i < aux.length; i++) meuArray[i] = Integer.parseInt(aux[i]);
 		return meuArray;
-	}
-	
-	public static void sortRecursive(int[] array, int i) {
-		
-		if(i < array.length) {
-		
-			int j = i;
-			while(j > 0 && array[j] < array[j-1]) {
-				swap(array, j, j-1);
-				j--;
-			}
-			
-			System.out.println(Arrays.toString(array));
-			sortRecursive(array, i+1);
-		}
-		
 	}
 	
 }
