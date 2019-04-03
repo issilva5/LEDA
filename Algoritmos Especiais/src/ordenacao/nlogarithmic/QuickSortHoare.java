@@ -1,4 +1,6 @@
-package ordenacao;
+package ordenacao.nlogarithmic;
+
+import ordenacao.quadratic.SortingAlgorithm;
 
 public class QuickSortHoare<T extends Comparable<T>> implements SortingAlgorithm<T> {
 

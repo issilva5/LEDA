@@ -7,6 +7,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.Timeout;
 
+import ordenacao.nlogarithmic.DualPivotQuickSort;
+import ordenacao.quadratic.SortingAlgorithm;
+
 class SortingAlgorithmTest {
 
 	private Integer[] vetorTamPar;

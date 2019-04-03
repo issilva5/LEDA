@@ -1,6 +1,6 @@
 package util;
 
-import ordenacao.*;
+import ordenacao.quadratic.*;
 
 public class SortingTimeGet {
 	
@@ -10,7 +10,7 @@ public class SortingTimeGet {
 		this.generator = new ArrayGenerator();
 	}
 	
-	public long generate(SortingAlgorithm<Integer> sorter, Integer[] array) {
+	private long generate(SortingAlgorithm<Integer> sorter, Integer[] array) {
 		
 		long start = System.currentTimeMillis(); 
 	       

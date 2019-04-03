@@ -1,4 +1,4 @@
-package ordenacao;
+package ordenacao.quadratic;
 
 public interface SortingAlgorithm<T extends Comparable<T>> {
 

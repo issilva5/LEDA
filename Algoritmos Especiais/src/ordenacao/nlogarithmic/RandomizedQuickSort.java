@@ -1,6 +1,8 @@
-package ordenacao;
+package ordenacao.nlogarithmic;
 
 import java.util.Random;
+
+import ordenacao.quadratic.SortingAlgorithm;
 
 public class RandomizedQuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 

@@ -1,4 +1,4 @@
-package ordenacao;
+package ordenacao.quadratic;
 
 public class OddEvenSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
