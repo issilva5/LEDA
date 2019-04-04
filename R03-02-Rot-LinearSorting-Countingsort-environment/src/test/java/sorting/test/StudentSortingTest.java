@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import sorting.AbstractSorting;
-import sorting.linearSorting.CountingSort;
+//import sorting.linearSorting.CountingSort;
 import sorting.linearSorting.ExtendedCountingSort;
 
 public class StudentSortingTest {
@@ -26,7 +26,7 @@ public class StudentSortingTest {
 				31 });
 		populaVetorTamanhoImpar(new Integer[] { 6, 41, 32, 7, 26, 4, 37, 49,
 				11, 18, 36 });
-		populaVetorRepetido(new Integer[] { 4, 9, 3, 4, 1, 5, 1, 4 });
+		populaVetorRepetido(new Integer[] { 4, 9, 0, 4, 1, 5, 0, 4 });
 		populaVetorIgual(new Integer[] { 6, 6, 6, 6, 6, 6 });
 
 		getImplementation();
@@ -168,7 +168,7 @@ public class StudentSortingTest {
 
 	@Test
 	public void testSort16() {
-		genericTestPartial(new Integer[]{-30, -25, -20, -15, -10, -5, -1}, 0, 6);
+		genericTestPartial(new Integer[]{-30, 0, -20, -15, 0, 5, -1}, 0, 6);
 	}
 
 	@Test
@@ -188,7 +188,7 @@ public class StudentSortingTest {
 
 	@Test
 	public void testSort20() {
-		genericTest(new Integer[] {-3});
+		genericTest(new Integer[] {0});
 	}
 
 	// MÉTODOS QUE OS ALUNOS PODEM CRIAR
