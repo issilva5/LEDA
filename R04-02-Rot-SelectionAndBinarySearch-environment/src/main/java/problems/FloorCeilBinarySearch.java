@@ -15,25 +15,46 @@ public class FloorCeilBinarySearch implements FloorCeil {
 
 	@Override
 	public Integer floor(Integer[] array, Integer x) {
-
-		int left = 0;
-		int rigth = array.length;
+		
 		Integer floor = null;
-
-		while (left < rigth) {
-
-			int meio = (left + rigth)/2;
-
-			if (array[meio].compareTo(x) == 0) {
-				rigth = meio - 1;
-				floor = array[meio];
-			} else if (array[meio].compareTo(x) < 0) {
-				left = meio + 1;
-				floor = Integer.max(floor, array[meio]);
-			} else {
-				rigth = meio - 1;
+		
+		if (array != null && x != null) {
+		
+			int left = 0;
+			int rigth = array.length - 1;
+			
+	
+			while (left <= rigth) {
+	
+				int meio = (left + rigth)/2;
+	
+				if (array[meio].compareTo(x) == 0) {
+					
+					rigth = meio - 1;
+					floor = array[meio];
+					
+				} else if (array[meio].compareTo(x) < 0) {
+					
+					left = meio + 1;
+					
+					if (floor == null) {
+						
+						floor = array[meio];
+						
+					} else {
+						
+						floor = Integer.max(floor, array[meio]);
+						
+					}
+					
+				} else {
+					
+					rigth = meio - 1;
+					
+				}
+	
 			}
-
+			
 		}
 
 		return floor;
@@ -42,25 +63,45 @@ public class FloorCeilBinarySearch implements FloorCeil {
 
 	@Override
 	public Integer ceil(Integer[] array, Integer x) {
-
-		int left = 0;
-		int rigth = array.length;
+		
 		Integer ceil = null;
-
-		while (left < rigth) {
-
-			int meio = (left + rigth)/2;
-
-			if (array[meio].compareTo(x) == 0) {
-				rigth = meio - 1;
-				ceil = array[meio];
-			} else if (array[meio].compareTo(x) < 0) {
-				left = meio + 1;
-			} else {
-				rigth = meio - 1;
-				ceil = Integer.min(ceil, array[meio]);
+		
+		if(array != null && x != null) {
+			
+			int left = 0;
+			int rigth = array.length - 1;
+			
+			while (left <= rigth) {
+	
+				int meio = (left + rigth)/2;
+				
+				if (array[meio].compareTo(x) == 0) {
+					
+					rigth = meio - 1;
+					ceil = array[meio];
+					
+				} else if (array[meio].compareTo(x) < 0) {
+					
+					left = meio + 1;
+					
+				} else {
+					
+					rigth = meio - 1;
+					
+					if(ceil == null) {
+						
+						ceil = array[meio];
+						
+					} else {
+						
+						ceil = Integer.min(ceil, array[meio]);
+						
+					}
+					
+				}
+	
 			}
-
+			
 		}
 
 		return ceil;

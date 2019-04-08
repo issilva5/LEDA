@@ -21,52 +21,71 @@ public class OrderStatisticsSelectionImpl<T extends Comparable<T>> implements Or
 	 */
 	@Override
 	public T getOrderStatistics(T[] array, int k) {
-
-		T aux = null;
-
+		
+		T result = null;
+		
 		if(array != null && array.length > 0) {
+		
+			T menor = array[0];
+	
+			for (int j = 0; j < array.length; j++) {
+	
+				if(array[j].compareTo(menor) < 0) {
+	
+					menor = array[j];
+	
+				}
+	
+			}
+	
+			result = getOrderStatistics(array, menor, --k);
+			
+		}
+		
+		return result;
 
-			aux = array[0];
+	}
+	
+	public T getOrderStatistics(T[] array, T less, int k) {
+		
+		T result;
+		
+		if (k == 0) {
+			
+			result = less;
+			
+		} else {
 
-			for (int i = 0; i < k; i++) {
+			T menor = null;
 
-				T menor = aux;
+			for (int j = 0; j < array.length; j++) {
 
-				for (int j = 0; j < array.length; j++) {
-
-					if(array[j].compareTo(menor) < 0) {
-
+				if(array[j].compareTo(less) > 0) {
+					
+					if (menor == null) {
+						
 						menor = array[j];
-
+						
+					} else {
+						
+						if (array[j].compareTo(menor) < 0) {
+							
+							menor = array[j];
+							
+						}
+						
 					}
 
 				}
 
-				aux = menor;
-
 			}
-
+			
+			result = getOrderStatistics(array, menor, --k);
+			
 		}
-
-		return aux;
-
-
+		
+		return result;
+		
 	}
-
-	/*public static void main() {
-
-		OrderStatisticsSelectionImpl<Integer> order = new OrderStatisticsSelectionImpl<>();
-		Integer[] array = new Integer[]{9, 5, 1, 14, 3, 2, 0, 67, 4};
-		System.out.println(order.getOrderStatistics(array, 1));
-		System.out.println(order.getOrderStatistics(array, 2));
-		System.out.println(order.getOrderStatistics(array, 3));
-		System.out.println(order.getOrderStatistics(array, 4));
-		System.out.println(order.getOrderStatistics(array, 5));
-		System.out.println(order.getOrderStatistics(array, 6));
-		System.out.println(order.getOrderStatistics(array, 7));
-		System.out.println(order.getOrderStatistics(array, 8));
-		System.out.println(order.getOrderStatistics(array, 9));
-
-	}*/
 
 }
