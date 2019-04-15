@@ -72,7 +72,13 @@ public class QueueImpl<T> implements Queue<T> {
 
 	@Override
 	public T dequeue() throws QueueUnderflowException {
+		
+		if (this.isEmpty()) {
 
+			throw new QueueUnderflowException();
+
+		}
+		
 		T front = this.head();
 		this.shiftLeft();
 
