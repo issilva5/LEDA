@@ -1,7 +1,7 @@
 adt/queue/Queue.class
 adt/stack/Stack.class
-adt/linkedList/DoubleLinkedListImpl.class
 adt/stack/StackOverflowException.class
+adt/linkedList/DoubleLinkedListImpl.class
 adt/stack/StackUnderflowException.class
 adt/linkedList/DoubleLinkedListNode.class
 adt/linkedList/SingleLinkedListImpl.class

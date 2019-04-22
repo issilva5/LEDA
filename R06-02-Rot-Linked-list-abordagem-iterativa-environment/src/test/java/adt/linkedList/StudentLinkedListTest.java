@@ -16,6 +16,7 @@ public class StudentLinkedListTest {
 
 		// Lista com 3 elementos.
 		lista1.insert(3);
+		lista1.insert(null);
 		lista1.insert(2);
 		lista1.insert(1);
 
@@ -42,6 +43,7 @@ public class StudentLinkedListTest {
 	public void testSearch() {
 		Assert.assertTrue(2 == lista1.search(2));
 		Assert.assertNull(lista1.search(4));
+		Assert.assertNull(lista1.search(null));
 		Assert.assertFalse(3 == lista1.search(2));
 	}
 
@@ -62,8 +64,14 @@ public class StudentLinkedListTest {
 	public void testRemove() {
 		Assert.assertEquals(3, lista1.size());
 		lista1.remove(2);
+		lista1.remove(null);
+		lista2.remove(2);
 		lista1.remove(1);
 		Assert.assertEquals(1, lista1.size());
+		lista1.remove(3);
+		Assert.assertEquals(0, lista1.size());
+		lista1.remove(3);
+		Assert.assertEquals(0, lista1.size());
 
 	}
 

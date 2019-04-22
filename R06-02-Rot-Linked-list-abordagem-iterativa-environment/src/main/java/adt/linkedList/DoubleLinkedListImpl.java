@@ -4,21 +4,75 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 		DoubleLinkedList<T> {
 
 	protected DoubleLinkedListNode<T> last;
-
+	
+	@Override
+	public void insert(T element) {
+		
+		if (element != null) {
+			
+			if (this.isEmpty()) {
+				
+				DoubleLinkedListNode<T> auxNode = new DoubleLinkedListNode<>(element, new DoubleLinkedListNode<T>(), new DoubleLinkedListNode<T>());
+				this.last = auxNode;
+				this.setHead(auxNode);
+				
+			} else {
+				
+				DoubleLinkedListNode<T> auxNode = new DoubleLinkedListNode<>();
+				
+				if (this.getHead() instanceof DoubleLinkedListNode<?>) {
+					
+					auxNode = (DoubleLinkedListNode<T>) this.getHead();
+					
+				}
+				
+				while (!auxNode.getNext().isNIL()) {
+					
+					if (auxNode.getNext() instanceof DoubleLinkedListNode<?>) {
+						
+						auxNode = (DoubleLinkedListNode<T>) auxNode.getNext();
+						
+					}
+					
+				}
+				
+				auxNode.setNext(new DoubleLinkedListNode<>(element, new DoubleLinkedListNode<>(), auxNode));
+				
+				if (auxNode.getNext() instanceof DoubleLinkedListNode<?>) {
+					
+					this.last = (DoubleLinkedListNode<T>) auxNode.getNext();
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
 	@Override
 	public void insertFirst(T element) {
 
 		if (element != null) {
 
 			if (this.isEmpty()) {
-
-				this.setHead(new DoubleLinkedListNode<T>(element, new DoubleLinkedListNode<T>(), new DoubleLinkedListNode<T>()));
-				this.last = (DoubleLinkedListNode<T>) this.getHead();
+				
+				this.last = new DoubleLinkedListNode<T>(element, new DoubleLinkedListNode<T>(), new DoubleLinkedListNode<T>());
+				this.setHead(this.last);
 
 			} else {
-
-				this.setHead(new DoubleLinkedListNode<T>(element, (DoubleLinkedListNode<T>) this.getHead(), new DoubleLinkedListNode<T>()));
-
+				
+				DoubleLinkedListNode<T> auxNode = new DoubleLinkedListNode<>();
+				auxNode.setData(this.getHead().getData());
+				auxNode.setNext(this.getHead().getNext());
+				
+				this.setHead(new DoubleLinkedListNode<T>(element, auxNode, new DoubleLinkedListNode<T>()));
+				
+				if (this.getHead() instanceof DoubleLinkedListNode<?>) {
+				
+					auxNode.setPrevious((DoubleLinkedListNode<T>) this.getHead());
+					
+				}
 			}
 
 		}
@@ -33,7 +87,12 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 			if (this.size() == 1) {
 
 				this.setHead(this.getHead().getNext());
-				this.last = (DoubleLinkedListNode<T>) this.getHead();
+				
+				if (this.getHead() instanceof DoubleLinkedListNode<?>) {
+				
+					this.last = (DoubleLinkedListNode<T>) this.getHead();
+					
+				}
 
 			} else {
 
@@ -52,11 +111,12 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 
 			if (this.size() == 1) {
 
-				this.last = this.last.getPrevious();
+				this.last = new DoubleLinkedListNode<T>();
 				this.setHead(this.last);
 
 			} else {
-
+				
+				this.last.getPrevious().setNext(new DoubleLinkedListNode<T>());
 				this.last = this.last.getPrevious();
 
 			}

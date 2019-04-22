@@ -16,6 +16,7 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 		// Lista com 3 elementos.
 		lista1.insert(3);
 		lista1.insert(2);
+		lista1.insert(null);
 		lista1.insert(1);
 
 		// Lista com 1 elemento.
@@ -34,6 +35,9 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 	@Test
 	public void testInsertFirst() {
 		((DoubleLinkedList<Integer>) lista1).insertFirst(4);
+		((DoubleLinkedList<Integer>) lista1).insertFirst(null);
+		((DoubleLinkedList<Integer>) lista2).insertFirst(1);
+		Assert.assertArrayEquals(new Integer[] { 1 }, lista2.toArray());
 		Assert.assertArrayEquals(new Integer[] { 4, 3, 2, 1 }, lista1.toArray());
 	}
 
@@ -41,11 +45,35 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 	public void testRemoveFirst() {
 		((DoubleLinkedList<Integer>) lista1).removeFirst();
 		Assert.assertArrayEquals(new Integer[] { 2, 1 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeFirst();
+		Assert.assertArrayEquals(new Integer[] { 1 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeFirst();
+		Assert.assertArrayEquals(new Integer[] { }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeFirst();
+		Assert.assertArrayEquals(new Integer[] { }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).insertFirst(4);
+		Assert.assertArrayEquals(new Integer[] { 4 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeFirst();
+		Assert.assertArrayEquals(new Integer[] { }, lista1.toArray());
+		lista1.insert(4);
+		Assert.assertArrayEquals(new Integer[] { 4 }, lista1.toArray());
 	}
 
 	@Test
 	public void testRemoveLast() {
 		((DoubleLinkedList<Integer>) lista1).removeLast();
 		Assert.assertArrayEquals(new Integer[] { 3, 2 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeLast();
+		Assert.assertArrayEquals(new Integer[] { 3 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeLast();
+		Assert.assertArrayEquals(new Integer[] {  }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeLast();
+		Assert.assertArrayEquals(new Integer[] {  }, lista1.toArray());
+		lista1.insert(4);
+		Assert.assertArrayEquals(new Integer[] { 4 }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).removeLast();
+		Assert.assertArrayEquals(new Integer[] {  }, lista1.toArray());
+		((DoubleLinkedList<Integer>) lista1).insertFirst(4);
+		Assert.assertArrayEquals(new Integer[] { 4 }, lista1.toArray());
 	}
 }

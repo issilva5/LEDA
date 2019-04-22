@@ -119,6 +119,7 @@ public class SingleLinkedListImpl<T> implements LinkedList<T> {
 
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toArray() {
 
