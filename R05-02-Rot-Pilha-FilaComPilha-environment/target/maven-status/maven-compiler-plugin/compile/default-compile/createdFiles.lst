@@ -5,5 +5,5 @@ adt/stack/StackOverflowException.class
 adt/queue/QueueOverflowException.class
 adt/queue/QueueUnderflowException.class
 adt/stack/StackUnderflowException.class
-adt/queue/QueueImpl.class
 adt/queue/QueueUsingStack.class
+adt/queue/QueueImpl.class
