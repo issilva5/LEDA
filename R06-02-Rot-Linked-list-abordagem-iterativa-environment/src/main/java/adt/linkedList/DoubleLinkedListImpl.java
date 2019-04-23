@@ -51,6 +51,61 @@ public class DoubleLinkedListImpl<T> extends SingleLinkedListImpl<T> implements
 	}
 	
 	@Override
+	public void remove(T element) {
+		
+		if (element != null) {
+			
+			if (!this.isEmpty()) {
+				
+				if (this.size() == 1) {
+					
+					this.last = new DoubleLinkedListNode<T>();
+					this.setHead(this.last);
+					
+				} else {
+					
+					if (this.getHead().getData().equals(element)) {
+						
+						this.setHead(this.getHead().getNext());
+						
+					} else {
+						
+						DoubleLinkedListNode<T> auxNode = new DoubleLinkedListNode<>();
+						
+						if (this.getHead() instanceof DoubleLinkedListNode<?>) {
+							
+							auxNode = (DoubleLinkedListNode<T>) this.getHead();
+							
+						}
+						
+						while(!auxNode.isNIL()) {
+							
+							if (auxNode.getData().equals(element)) {
+								
+								auxNode.getPrevious().setNext(auxNode.getNext());
+								( (DoubleLinkedListNode<T>) auxNode.getNext()).setPrevious(auxNode.getPrevious());
+								
+							}
+							
+							if (auxNode.getNext() instanceof DoubleLinkedListNode<?>) {
+								
+								auxNode = (DoubleLinkedListNode<T>) auxNode.getNext();
+								
+							}
+							
+						}
+						
+					}
+					
+				}
+				
+			}
+			
+		}
+		
+	}
+	
+	@Override
 	public void insertFirst(T element) {
 
 		if (element != null) {

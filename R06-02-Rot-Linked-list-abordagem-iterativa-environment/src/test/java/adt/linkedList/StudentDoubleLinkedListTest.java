@@ -57,6 +57,12 @@ public class StudentDoubleLinkedListTest extends StudentLinkedListTest {
 		Assert.assertArrayEquals(new Integer[] { }, lista1.toArray());
 		lista1.insert(4);
 		Assert.assertArrayEquals(new Integer[] { 4 }, lista1.toArray());
+		lista1.insert(5);
+		Assert.assertArrayEquals(new Integer[] { 4, 5 }, lista1.toArray());
+		lista1.remove(4);
+		Assert.assertArrayEquals(new Integer[] { 5 }, lista1.toArray());
+		lista1.insert(4);
+		Assert.assertArrayEquals(new Integer[] { 5, 4 }, lista1.toArray());
 	}
 
 	@Test
