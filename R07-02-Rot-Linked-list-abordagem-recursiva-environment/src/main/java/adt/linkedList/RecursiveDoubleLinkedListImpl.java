@@ -9,141 +9,179 @@ public class RecursiveDoubleLinkedListImpl<T> extends
 
 	}
 
-	public RecursiveDoubleLinkedListImpl(T data, RecursiveDoubleLinkedListImpl<T> next, RecursiveDoubleLinkedListImpl<T> previous) {
-		super(data, next);
-		this.previous = previous;
-	}
-
 	public RecursiveDoubleLinkedListImpl(T data) {
 		super(data);
 	}
 
-	public RecursiveDoubleLinkedListImpl(T data, RecursiveDoubleLinkedListImpl<T> previous) {
-		super(data);
-		this.previous = previous;
-	}
-
-
 	@Override
 	public void insert(T element) {
-
+		
 		if (element != null) {
-
+			
 			if (this.isEmpty()) {
-
+				
 				this.data = element;
-
+				
+			} else if (this.next == null) {
+				
+				RecursiveDoubleLinkedListImpl<T> auxNode = new RecursiveDoubleLinkedListImpl<>(element);
+				this.next = auxNode;
+				auxNode.previous = this;
+				
 			} else {
-
-				if (this.next == null) {
-
-					this.next = new RecursiveDoubleLinkedListImpl<>(element);
-					((RecursiveDoubleLinkedListImpl<T>) this.next).previous = this;
-
-				} else {
-
-					this.next.insert(element);
-
-				}
-
+				
+				this.next.insert(element);
+				
 			}
-
+			
 		}
-
+		
 	}
-
+	
 	@Override
 	public void remove(T element) {
-
-		if (!this.isEmpty()) {
-
-			if (this.data.equals(element)) {
-
-				if (this.size() == 1) {
-
-					this.data = null;
-
+		
+		if (element != null) {
+			
+			if (!this.isEmpty()) {
+				
+				if (this.data.equals(element)) {
+					
+					if (this.next == null) {
+						
+						if (this.previous == null) {
+							
+							this.data = null;
+							
+						} else {
+							
+							this.previous.next = this.next;
+							
+						}
+						
+					} else {
+						
+						if (this.previous == null) {
+							
+							((RecursiveDoubleLinkedListImpl<T>) this.next).previous = null;
+							
+							if (this.next.next != null) {
+								
+								((RecursiveDoubleLinkedListImpl<T>) this.next.next).previous = this;
+								
+							}
+							
+							this.data = this.next.data;
+							this.next = this.next.next;
+							
+						} else {
+							
+							this.previous.next = this.next;
+							((RecursiveDoubleLinkedListImpl<T>) this.next).previous = this.previous;
+							
+						}
+						
+					}
+					
 				} else {
-
-					((RecursiveDoubleLinkedListImpl<T>) this.next).previous = this.previous;
-					this.data = this.next.data;
-					this.next = this.next.next;
-
+					
+					if (this.next != null) {
+						
+						this.next.remove(element);
+						
+					}
+					
 				}
-
-			} else {
-
-				if (this.next != null) {
-
-					this.next.remove(element);
-
-				}
-
+				
 			}
-
+			
 		}
-
+		
 	}
 
 	@Override
 	public void insertFirst(T element) {
-
+		
 		if (element != null) {
-
+			
 			if (this.isEmpty()) {
-
+				
 				this.data = element;
-
+				
 			} else {
-
-				RecursiveDoubleLinkedListImpl<T> auxNode = new RecursiveDoubleLinkedListImpl<T>(this.data, (RecursiveDoubleLinkedListImpl<T>) this.next, this);
+				
+				RecursiveDoubleLinkedListImpl<T> auxNode = new RecursiveDoubleLinkedListImpl<>(this.data);
+				auxNode.next = this.next;
+				auxNode.previous = this;
+				
+				if (this.next != null) {
+					
+					((RecursiveDoubleLinkedListImpl<T>) this.next).previous = auxNode;
+					
+				}
+				
 				this.data = element;
 				this.next = auxNode;
-
+				
 			}
-
+			
 		}
-
+		
 	}
 
 	@Override
 	public void removeFirst() {
-
+		
 		if (!this.isEmpty()) {
-
+			
 			if (this.next == null) {
-
+				
 				this.data = null;
-
+				
 			} else {
-
+				
 				((RecursiveDoubleLinkedListImpl<T>) this.next).previous = null;
+				
+				if (this.next.next != null) {
+					
+					((RecursiveDoubleLinkedListImpl<T>) this.next.next).previous = this;
+					
+				}
+				
 				this.data = this.next.data;
 				this.next = this.next.next;
-
+				
 			}
-
+			
 		}
-
+		
 	}
 
 	@Override
 	public void removeLast() {
-
+		
 		if (!this.isEmpty()) {
-
+			
 			if (this.next == null) {
-
-				this.previous.next = null;
-
+				
+				if (this.previous == null) {
+					
+					this.data = null;
+					
+				} else {
+					
+					this.previous.next = null;
+					
+				}
+				
 			} else {
-
+				
 				((RecursiveDoubleLinkedListImpl<T>) this.next).removeLast();
-
+				
 			}
-
+			
 		}
-
+		
 	}
 
 	public RecursiveDoubleLinkedListImpl<T> getPrevious() {

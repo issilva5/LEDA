@@ -6,12 +6,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 	protected RecursiveSingleLinkedListImpl<T> next;
 
 	public RecursiveSingleLinkedListImpl() {
-
-	}
-
-	public RecursiveSingleLinkedListImpl(T data, RecursiveSingleLinkedListImpl<T> next) {
-		this.data = data;
-		this.next = next;
+		
 	}
 
 	public RecursiveSingleLinkedListImpl(T data) {
@@ -110,28 +105,24 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		if (element != null) {
 
 			if (!this.isEmpty()) {
-
+				
 				if (this.data.equals(element)) {
-
-					if (this.size() == 1) {
-
+					
+					if (this.next == null) {
+						
 						this.data = null;
-
+						
 					} else {
-
+						
 						this.data = this.next.data;
 						this.next = this.next.next;
-
+						
 					}
-
-				} else {
-
-					if (this.next != null) {
-
-						this.next.remove(element);
-
-					}
-
+					
+				} else if (this.next != null) {
+					
+					this.next.remove(element, this);
+					
 				}
 
 			}
@@ -140,6 +131,35 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 
 	}
 
+	private void remove(T element, RecursiveSingleLinkedListImpl<T> node) {
+		
+		if (this.data.equals(element)) {
+			
+			if (this.next == null) {
+				
+				this.data = null;
+				node.next = null;
+				
+			} else {
+				
+				this.data = this.next.data;
+				this.next = this.next.next;
+				
+			}
+			
+		} else {
+			
+			if (this.next != null) {
+				
+				this.next.remove(element, this);
+				
+			}
+			
+		}
+		
+	}
+
+	@SuppressWarnings("unchecked")
 	@Override
 	public T[] toArray() {
 
@@ -158,7 +178,7 @@ public class RecursiveSingleLinkedListImpl<T> implements LinkedList<T> {
 		array[i] = this.data;
 
 		if (this.next != null) {
-
+			
 			this.next.toArray(array, i+1);
 
 		}

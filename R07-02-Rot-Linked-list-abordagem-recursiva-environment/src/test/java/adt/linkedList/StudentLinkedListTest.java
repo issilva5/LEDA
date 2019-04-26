@@ -36,6 +36,8 @@ public class StudentLinkedListTest {
 	@Test
 	public void testSize() {
 		Assert.assertEquals(3, lista1.size());
+		lista1.insert(null);
+		Assert.assertEquals(3, lista1.size());
 		Assert.assertEquals(0, lista2.size());
 	}
 
@@ -43,6 +45,8 @@ public class StudentLinkedListTest {
 	public void testSearch() {
 		Assert.assertTrue(2 == lista1.search(2));
 		Assert.assertNull(lista1.search(4));
+		Assert.assertNull(lista2.search(4));
+		Assert.assertNull(lista1.search(null));
 		Assert.assertFalse(3 == lista1.search(2));
 	}
 
@@ -61,11 +65,49 @@ public class StudentLinkedListTest {
 
 	@Test
 	public void testRemove() {
-		Assert.assertEquals(3, lista1.size());
+		
+		lista1.insert(-3);
+		lista1.insert(-2);
+		lista1.insert(22);
+		lista1.insert(15);
+		
+		Assert.assertEquals(7, lista1.size());
 		lista1.remove(2);
+		Assert.assertArrayEquals(new Integer[] { 3, 1, -3, -2, 22, 15 }, lista1.toArray());
 		lista1.remove(1);
+		Assert.assertArrayEquals(new Integer[] { 3, -3, -2, 22, 15 }, lista1.toArray());
+		Assert.assertEquals(5, lista1.size());
+		lista1.remove(null);
+		Assert.assertEquals(5, lista1.size());
+		lista1.remove(5);
+		Assert.assertEquals(5, lista1.size());
+		lista1.remove(3);
+		Assert.assertArrayEquals(new Integer[] { -3, -2, 22, 15 }, lista1.toArray());
+		Assert.assertEquals(4, lista1.size());
+		lista2.remove(16);
+		lista1.remove(-3);
+		Assert.assertArrayEquals(new Integer[] { -2, 22, 15 }, lista1.toArray());
+		Assert.assertEquals(3, lista1.size());
+		lista1.insert(5);
+		lista1.remove(5);
+		Assert.assertArrayEquals(new Integer[] { -2, 22, 15 }, lista1.toArray());
+		Assert.assertEquals(3, lista1.size());
+		lista1.insert(12);
+		Assert.assertArrayEquals(new Integer[] { -2, 22, 15, 12 }, lista1.toArray());
+		Assert.assertEquals(4, lista1.size());
+		lista1.remove(12);
+		Assert.assertArrayEquals(new Integer[] { -2, 22, 15 }, lista1.toArray());
+		Assert.assertEquals(3, lista1.size());
+		lista1.remove(15);
+		Assert.assertArrayEquals(new Integer[] { -2, 22 }, lista1.toArray());
+		Assert.assertEquals(2, lista1.size());
+		lista1.remove(-2);
+		Assert.assertArrayEquals(new Integer[] { 22 }, lista1.toArray());
 		Assert.assertEquals(1, lista1.size());
-
+		lista1.remove(22);
+		Assert.assertArrayEquals(new Integer[] { }, lista1.toArray());
+		Assert.assertEquals(0, lista1.size());
+		
 	}
 
 	@Test
