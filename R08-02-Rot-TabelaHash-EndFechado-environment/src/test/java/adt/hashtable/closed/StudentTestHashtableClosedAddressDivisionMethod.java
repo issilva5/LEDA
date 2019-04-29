@@ -44,6 +44,9 @@ public class StudentTestHashtableClosedAddressDivisionMethod {
 		table1.insert(101); // produz colisao no 0
 		assertEquals(1, table1.getCOLLISIONS());
 		assertEquals(0, table1.indexOf(101));
+		table1.insert(105); // nao produz colisao
+		assertEquals(1, table1.getCOLLISIONS());
+		assertEquals(83, table1.size());
 
 		table2.insert(103); // nao produz colisao inserindo 1 elemento na talbe
 							// vazia
@@ -54,9 +57,19 @@ public class StudentTestHashtableClosedAddressDivisionMethod {
 	@Test
 	public void testRemove() {
 		int currentSize = table1.size();
+		table1.remove(15); // elemento existente
+		assertEquals(currentSize, table1.size());
 		table1.remove(200); // elemento existente
 		assertEquals(currentSize - 1, table1.size());
 		assertEquals(-1, table1.indexOf(200));
+		table1.insert(105); // nao produz colisao
+		table1.insert(101); // produz colisao no 0
+		currentSize = table1.size();
+		table1.remove(105); // elemento existente
+		assertEquals(currentSize - 1, table1.size());
+		currentSize = table1.size();
+		table1.remove(101); // elemento existente
+		assertEquals(currentSize - 1, table1.size());
 	}
 
 	@Test
