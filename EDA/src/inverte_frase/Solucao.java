@@ -13,8 +13,12 @@ public class Solucao {
 		for (int i = 0; i < line.length(); i++) {
 			
 			if (line.charAt(i) == ' ') {
-				out = texto + " " + out;
+				
+				if (out.equals("")) out = texto;
+				else out = texto + " " + out;
+				
 				texto = "";
+				
 			} else {
 				
 				texto += line.charAt(i);
@@ -23,7 +27,9 @@ public class Solucao {
 			
 		}
 		
-		out = texto + " " + out;
+		if (out.equals("")) out = texto;
+		else out = texto + " " + out;
+		
 		System.out.println(out);
 		sc.close();
 		
