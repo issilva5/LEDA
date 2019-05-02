@@ -49,10 +49,33 @@ public class StudentTestHashtableOpenAddressLinearProbing {
 													// com 6 (prox disponivel)
 		assertEquals(6, table1.indexOf(new HashtableElement(12)));
 		assertEquals(4, table1.getCOLLISIONS());
+		
+		table1.insert(new HashtableElement(30));
+		assertEquals(0, table1.indexOf(new HashtableElement(30)));
+		assertEquals(4, table1.getCOLLISIONS());
+		
+		table1.insert(null);
+		assertEquals(4, table1.getCOLLISIONS());
+		
+		table1.insert(new HashtableElement(40));
+		assertEquals(1, table1.indexOf(new HashtableElement(40)));
+		assertEquals(5, table1.getCOLLISIONS());
+		
+		table1.insert(new HashtableElement(71));
+		assertEquals(8, table1.indexOf(new HashtableElement(71)));
+		assertEquals(12, table1.getCOLLISIONS());
+		
+		try {
+			table1.insert(new HashtableElement(15));
+			fail();
+		} catch (HashtableOverflowException h) {
+			
+		}
 
 		table2.insert(new HashtableElement(14)); // nao produz colisao. coloca
 													// no slot indexado com 4
 		assertEquals(4, table2.indexOf(new HashtableElement(14)));
+		assertEquals(-1, table2.indexOf(new HashtableElement(4)));
 		assertEquals(0, table2.getCOLLISIONS());
 
 	}
@@ -60,6 +83,8 @@ public class StudentTestHashtableOpenAddressLinearProbing {
 	@Test
 	public void testRemove() {
 		table1.remove(new HashtableElement(12)); // elemento inexistente
+		assertEquals(4, table1.size());
+		table1.remove(null); // elemento inexistente
 		assertEquals(4, table1.size());
 
 		table1.remove(new HashtableElement(5)); // elemento existente
@@ -74,6 +99,24 @@ public class StudentTestHashtableOpenAddressLinearProbing {
 				table1.search(new HashtableElement(5))); // elemento que existe
 		assertNull(table1.search(new HashtableElement(15))); // elemento que nao
 																// existe
+		assertNull(table1.search(null));
+		assertNull(table1.search(new HashtableElement(0)));
+	}
+	
+	@Test
+	public void testSearchWithDelete() {
+		table1.insert(new HashtableElement(7));
+		table1.insert(new HashtableElement(9));
+		table1.insert(new HashtableElement(12));
+		
+		assertEquals(new HashtableElement(5),
+				table1.search(new HashtableElement(5)));
+		
+		table1.remove(new HashtableElement(5));
+		table1.remove(new HashtableElement(2));
+		assertEquals(new HashtableElement(12),
+				table1.search(new HashtableElement(12)));
+		
 	}
 
 	@Test

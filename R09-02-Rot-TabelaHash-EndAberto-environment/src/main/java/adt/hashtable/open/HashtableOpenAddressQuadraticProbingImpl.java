@@ -15,25 +15,125 @@ public class HashtableOpenAddressQuadraticProbingImpl<T extends Storable>
 
 	@Override
 	public void insert(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		if (element != null) {
+			
+			boolean full = true;
+			int iterator = 0;
+			
+			while (iterator < this.table.length) {
+				
+				int hash = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, iterator);
+				
+				if (this.table[hash] == null || this.table[hash].equals(this.deletedElement)) {
+					this.table[hash] = element;
+					full = false;
+					break;
+				}
+				
+				iterator++;
+				
+			}
+			
+			if (full) {
+				
+				throw new HashtableOverflowException();
+				
+			} else {
+			
+				this.COLLISIONS += iterator;
+				this.elements++;
+				
+			}
+			
+		}
+		
 	}
 
 	@Override
 	public void remove(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		if (element != null) {
+			
+			int iterator = 0;
+			
+			while (iterator < this.table.length) {
+				
+				int hash = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, iterator);
+				
+				if (this.table[hash] == null) {
+					break;
+				} else if (this.table[hash].equals(element)) {
+					this.table[hash] = this.deletedElement;
+					this.elements--;
+					break;
+				}
+				
+				iterator++;
+				
+			}
+			
+		}
+		
 	}
 
 	@Override
 	public T search(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		T returnValue = null;
+		
+		if (element != null) {
+			
+			int iterator = 0;
+			
+			while (iterator < this.table.length) {
+				
+				int hash = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, iterator);
+				
+				if (this.table[hash] == null) {
+					break;
+				} else if (this.table[hash].equals(element)) {
+					returnValue = element;
+					break;
+				}
+				
+				iterator++;
+				
+			}
+			
+		}
+		
+		return returnValue;
+		
 	}
 
 	@Override
 	public int indexOf(T element) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		int index = -1;
+		
+		if (element != null) {
+			
+			int iterator = 0;
+			
+			while (iterator < this.table.length) {
+				
+				int hash = ((HashFunctionQuadraticProbing<T>) this.hashFunction).hash(element, iterator);
+				
+				if (this.table[hash] == null) {
+					break;
+				} else if (this.table[hash].equals(element)) {
+					index = hash;
+					break;
+				}
+				
+				iterator++;
+				
+			}
+			
+		}
+		
+		return index;
+		
 	}
 }
