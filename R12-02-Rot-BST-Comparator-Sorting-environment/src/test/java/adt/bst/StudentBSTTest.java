@@ -2,15 +2,18 @@ package adt.bst;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
 import adt.bst.BSTImpl;
+import adt.bst.extended.SortComparatorBSTImpl;
 import adt.bt.BTNode;
 
 public class StudentBSTTest {
 
-	private BSTImpl<Integer> tree;
+	private SortComparatorBSTImpl<Integer> tree;
 	private BTNode<Integer> NIL = new BTNode<Integer>();
 
 	private void fillTree() {
@@ -22,7 +25,7 @@ public class StudentBSTTest {
 
 	@Before
 	public void setUp() {
-		tree = new BSTImpl<>();
+		tree = new SortComparatorBSTImpl<>((o1, o2) -> o1 - o2);
 	}
 
 	@Test
@@ -80,7 +83,7 @@ public class StudentBSTTest {
 	public void testSucessorPredecessor() {
 
 		fillTree(); // -40 -34 0 2 5 6 9 12 23 67 76 232
-
+		
 		assertEquals(null, tree.predecessor(-40));
 		assertEquals(new Integer(-34), tree.sucessor(-40).getData());
 
@@ -92,6 +95,10 @@ public class StudentBSTTest {
 
 		assertEquals(new Integer(0), tree.predecessor(2).getData());
 		assertEquals(new Integer(5), tree.sucessor(2).getData());
+		
+		tree.insert(-38);
+		assertEquals(new Integer(-40), tree.predecessor(-38).getData());
+		assertEquals(new Integer(-34), tree.sucessor(-38).getData());
 	}
 
 	@Test
@@ -126,9 +133,12 @@ public class StudentBSTTest {
 	@Test
 	public void testRemove() {
 		fillTree(); // -40 -34 0 2 5 6 9 12 23 67 76 232
-
+		
 		Integer[] order = { -40, -34, 0, 2, 5, 6, 9, 12, 23, 67, 76, 232 };
 		assertArrayEquals(order, tree.order());
+		
+		Integer[] postOrder = { -40, 0, 2, 5, -34, 12, 9, 67, 232, 76, 23, 6 };
+		assertArrayEquals(postOrder, tree.postOrder());
 
 		tree.remove(6);
 		order = new Integer[] { -40, -34, 0, 2, 5, 9, 12, 23, 67, 76, 232 };
@@ -151,5 +161,63 @@ public class StudentBSTTest {
 		assertEquals(new Integer(-40), tree.search(-40).getData());
 		assertEquals(new Integer(-34), tree.search(-34).getData());
 		assertEquals(NIL, tree.search(2534));
+	}
+	
+	@Test
+	public void testRemove2() {
+		fillTree(); // -40 -34 0 2 5 6 9 12 23 67 76 232
+
+		int size = 12;
+		assertEquals(size, tree.size());
+		Comparable[] order = tree.order();
+		int pos = 0;
+		
+		while (!tree.isEmpty()) {
+			tree.remove((Integer) order[pos++]);
+			assertEquals(--size, tree.size());
+		}
+		
+		fillTree(); // -40 -34 0 2 5 6 9 12 23 67 76 232
+
+		size = 12;
+		assertEquals(size, tree.size());
+		Comparable[] preOrder = tree.preOrder();
+		pos = 0;
+		
+		while (!tree.isEmpty()) {
+			tree.remove((Integer) preOrder[pos++]);
+			assertEquals(--size, tree.size());
+		}
+		
+		fillTree(); // -40 -34 0 2 5 6 9 12 23 67 76 232
+
+		size = 12;
+		assertEquals(size, tree.size());
+		Comparable[] postOrder = tree.postOrder();
+		pos = 0;
+		
+		while (!tree.isEmpty()) {
+			tree.remove((Integer) postOrder[pos++]);
+			assertEquals(--size, tree.size());
+		}
+		
+		fillTree();
+		tree.insert(-50);
+		tree.remove(-40);
+	}
+	
+	@Test
+	public void testSort() {
+		fillTree();
+		Integer[] order = new Integer[] { -40, -34, 0, 2, 5, 12, 23, 67, 76, 232 };
+		Integer[] unorder = new Integer[] { 12, 0, 5, 232, 67, -40, 76, -34, 2, 23 };
+		assertArrayEquals(order, tree.sort(unorder));
+	}
+	
+	@Test
+	public void testReverse() {
+		fillTree();
+		Integer[] order = new Integer[] { 232, 76, 67, 23, 12, 9, 6, 5, 2, 0, -34, -40};
+		assertArrayEquals(order, tree.reverseOrder());
 	}
 }

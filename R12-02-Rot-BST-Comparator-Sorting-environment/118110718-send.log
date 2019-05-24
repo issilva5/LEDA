@@ -7,3 +7,13 @@
   <level>FINE</level>
   <message>File 118110718-ITALLO DE SOUSA SILVA.zip was received. It was sent by ITALLO DE SOUSA SILVA from IP 150.165.42.177 at 23-05-2019 14*28*11</message>
 </record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-05-24T19:57:54.200-0300</date>
+  <logger>ITALLO DE SOUSA SILVA</logger>
+  <level>FINE</level>
+  <message>File 118110718-ITALLO DE SOUSA SILVA.zip was received. It was sent by ITALLO DE SOUSA SILVA from IP 192.168.0.25 at 24-05-2019 19*57*54</message>
+</record>
