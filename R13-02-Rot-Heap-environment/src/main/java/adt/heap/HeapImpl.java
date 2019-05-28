@@ -82,57 +82,32 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 	 */
 	private void heapify(int position) {
 		
-		T bigger = this.getMax(position);
-		int left = this.left(position);
-		int right = this.right(position);
+		int bigger = this.getMax(position);
 		
-		if (this.comparator.compare(bigger, this.heap[position]) != 0) {
+		if (bigger != position) {
 			
-			if (this.comparator.compare(bigger, this.heap[left]) == 0) {
-				
-				Util.swap(this.heap, position, left);
-				this.heapify(left);
-				
-			} else {
-				
-				Util.swap(this.heap, position, right);
-				this.heapify(right);
-				
-			}
+			Util.swap(this.heap, position, bigger);
+			this.heapify(bigger);
 			
 		}
 		
 	}
 
-	private T getMax(int position) {
+	private int getMax(int position) {
 		
 		int left = this.left(position);
 		int right = this.right(position);
-		T bigger = this.heap[position];
+		int bigger = position;
 		
-		if (left <= this.index && this.comparator.compare(this.heap[left], this.heap[position]) > 0) {
+		if (left <= this.index && this.comparator.compare(this.heap[left], this.heap[bigger]) > 0) {
 			
-			if (right > this.index || this.comparator.compare(this.heap[left], this.heap[right]) > 0) {
-				
-				bigger = this.heap[left];
-				
-			} else if (right <= this.index) {
-				
-				bigger = this.heap[right];
-				
-			}
+			bigger = left;
 			
-		} else if (right <= this.index && this.comparator.compare(this.heap[right], this.heap[position]) > 0) {
+		}
+		
+		if (right <= this.index && this.comparator.compare(this.heap[right], this.heap[bigger]) > 0) {
 			
-			if (left > this.index || this.comparator.compare(this.heap[right], this.heap[left]) > 0) {
-				
-				bigger = this.heap[right];
-				
-			} else if (left <= this.index) {
-				
-				bigger = this.heap[left];
-				
-			}
+			bigger = right;
 			
 		}
 		
@@ -239,56 +214,32 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 
 	private void sortHeapify(int position) {
 		
-		T smallest = this.getMin(position);
-		int left = this.left(position);
-		int right = this.right(position);
+		int smallest = this.getMin(position);
 		
-		if (smallest.compareTo(this.heap[position]) != 0) {
+		if (smallest != position) {
 			
-			if (smallest.compareTo(this.heap[left]) == 0) {
+			Util.swap(this.heap, position, smallest);
+			this.sortHeapify(smallest);
 				
-				Util.swap(this.heap, position, left);
-				this.sortHeapify(left);
-				
-			} else {
-				
-				Util.swap(this.heap, position, right);
-				this.sortHeapify(right);
-				
-			}
 		}
 		
 	}
 
-	private T getMin(int position) {
+	private int getMin(int position) {
 		
 		int left = this.left(position);
 		int right = this.right(position);
-		T smallest = this.heap[position];
+		int smallest = position;
 		
-		if (left <= this.index && this.heap[left].compareTo(smallest) < 0) {
+		if (left <= this.index && this.heap[left].compareTo(this.heap[smallest]) < 0) {
 			
-			if (right > this.index || this.heap[left].compareTo(this.heap[right]) < 0) {
-				
-				smallest = this.heap[left];
-				
-			} else if (right <= this.index) {
-				
-				smallest = this.heap[right];
-				
-			}
+			smallest = left;
 			
-		} else if (right <= this.index && this.heap[right].compareTo(smallest) < 0) {
+		}
+		
+		if (right <= this.index && this.heap[right].compareTo(this.heap[smallest]) < 0) {
 			
-			if (left > this.index || this.heap[right].compareTo(this.heap[left]) < 0) {
-				
-				smallest = this.heap[right];
-				
-			} else if (left <= this.index) {
-				
-				smallest = this.heap[left];
-				
-			}
+			smallest = right;
 			
 		}
 		
