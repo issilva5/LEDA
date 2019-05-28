@@ -17,11 +17,7 @@ public class StudentMaxHeapTest {
 
 	@Before
 	public void setUp() {
-		// TODO Instancie seu comparator para fazer sua estrutura funcionar como
-		// uma max heap aqui. Use instanciacao anonima da interface
-		// Comparator!!!!
-		Comparator<Integer> comparator = null;
-		heap = new HeapImpl<Integer>(comparator);
+		heap = new HeapImpl<Integer>((o1, o2) -> o1 - o2);
 	}
 
 	@Test
@@ -51,6 +47,18 @@ public class StudentMaxHeapTest {
 		assertFalse(heap.isEmpty());
 
 		verifyHeap(new Integer[] { 14, 8, 12, 7, 8, -5, -2, 3, -10, 0 });
+		
+		heap.insert(9);
+		heap.insert(13);
+		heap.insert(-1);
+		heap.insert(35);
+		heap.insert(19);
+		heap.insert(84);
+		heap.insert(100);
+		heap.insert(11);
+		heap.insert(-15);
+		heap.insert(346);
+		heap.insert(176);
 	}
 
 	@Test
@@ -65,7 +73,7 @@ public class StudentMaxHeapTest {
 		heap.insert(79);
 		heap.insert(53);
 		heap.insert(30);
-
+		
 		assertEquals(new Integer(79), heap.extractRootElement());
 		assertEquals(new Integer(53), heap.extractRootElement());
 		assertEquals(new Integer(45), heap.extractRootElement());
@@ -74,7 +82,7 @@ public class StudentMaxHeapTest {
 
 		assertEquals(5, heap.size());
 		assertFalse(heap.isEmpty());
-
+		
 		verifyHeap(new Integer[] { 22, 17, 15, 26, 30 });
 	}
 
