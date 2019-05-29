@@ -142,9 +142,17 @@ public class HeapImpl<T extends Comparable<T>> implements Heap<T> {
 	public void buildHeap(T[] array) {
 		
 		this.clear();
+		
 		for (int i = 0; i < array.length; i++) {
 			
 			this.insert(array[i]);
+			
+		}
+		
+		
+		for (int i = array.length - 1; i > -1; i--) {
+			
+			this.heapify(this.parent(i));
 			
 		}
 		
