@@ -25,36 +25,21 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 	@Override
 	public int height() {
 		
+		return this.height(this.root);
+		
+	}
+
+	protected int height(BSTNode<T> node) {
+		
 		int height = -1;
 		
-		if (!this.isEmpty()) {
+		if (!node.isEmpty()) {
 			
-			height += this.height(this.root);
+			height = 1 + Math.max(this.height( (BSTNode<T>) node.getLeft()), this.height( (BSTNode<T>) node.getRight()));
 			
 		}
 		
 		return height;
-		
-	}
-
-	private int height(BSTNode<T> node) {
-		
-		int leftHeight = 0, rightHeigth = 0;
-		
-		if (!node.getLeft().isEmpty()) {
-			
-			leftHeight = this.height( (BSTNode<T>) node.getLeft());
-			
-		}
-		
-		
-		if (!node.getRight().isEmpty()) {
-			
-			rightHeigth = this.height( (BSTNode<T>) node.getRight());
-			
-		}
-		
-		return 1 + Math.max(leftHeight, rightHeigth);
 		
 	}
 

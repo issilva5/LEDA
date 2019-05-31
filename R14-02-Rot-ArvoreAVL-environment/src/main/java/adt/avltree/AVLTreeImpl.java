@@ -14,13 +14,27 @@ import adt.bst.BSTNode;
 public class AVLTreeImpl<T extends Comparable<T>> extends BSTImpl<T> implements
 		AVLTree<T> {
 
-	// TODO Do not forget: you must override the methods insert and remove
-	// conveniently.
+	@Override
+	public void insert(T element) {
+		// TODO Auto-generated method stub
+		super.insert(element);
+	}
+	
+	@Override
+	public void remove(T element) {
+		// TODO Auto-generated method stub
+		super.remove(element);
+	}
 
 	// AUXILIARY
 	protected int calculateBalance(BSTNode<T> node) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		if (node == null || node.isEmpty()) {
+			return 0;
+		}
+		
+		return this.height((BSTNode<T>) node.getLeft()) - this.height((BSTNode<T>) node.getRight());
+		
 	}
 
 	// AUXILIARY
