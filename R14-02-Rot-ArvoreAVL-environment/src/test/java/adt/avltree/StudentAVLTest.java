@@ -55,7 +55,6 @@ public class StudentAVLTest {
 
 		avl.remove(-1);
 		assertEquals(4, avl.size());
-
 		avl.remove(91);
 		assertEquals(3, avl.size());
 		assertArrayEquals(new Integer[] { 12, 9, 55 }, avl.preOrder());
@@ -68,5 +67,59 @@ public class StudentAVLTest {
 		avl.remove(55);
 		assertEquals(NIL, avl.getRoot());
 		assertTrue(avl.isEmpty());
+	}
+	
+	@Test
+	public void testRemove2() {
+		avl.insert(1);
+		avl.insert(77);
+		avl.insert(34);
+		avl.insert(65);
+		avl.insert(12);
+		avl.insert(14);
+		avl.insert(67);
+		avl.insert(11);
+		avl.insert(38);
+		assertArrayEquals(new Integer[] { 34, 12, 1, 11, 14, 67, 65, 38, 77 }, avl.preOrder());
+		
+		avl.remove(-1);
+		assertEquals(9, avl.size());
+		
+		avl.remove(12);
+		assertEquals(8, avl.size());
+		assertArrayEquals(new Integer[] { 34, 11, 1, 14, 67, 65, 38, 77 }, avl.preOrder());
+		
+		avl.remove(34);
+		assertEquals(7, avl.size());
+		assertArrayEquals(new Integer[] { 38, 11, 1, 14, 67, 65, 77 }, avl.preOrder());
+		
+		avl.remove(67);
+		assertEquals(6, avl.size());
+		assertArrayEquals(new Integer[] { 38, 11, 1, 14, 77, 65 }, avl.preOrder());
+		
+		avl.remove(77);
+		assertEquals(5, avl.size());
+		assertArrayEquals(new Integer[] { 38, 11, 1, 14, 65 }, avl.preOrder());
+		
+		avl.remove(65);
+		assertEquals(4, avl.size());
+		assertArrayEquals(new Integer[] { 11, 1, 38, 14 }, avl.preOrder());
+		
+		avl.remove(1);
+		assertEquals(3, avl.size());
+		assertArrayEquals(new Integer[] { 14, 11, 38 }, avl.preOrder());
+		
+		avl.remove(14);
+		assertEquals(2, avl.size());
+		assertArrayEquals(new Integer[] { 38, 11 }, avl.preOrder());
+		
+		avl.remove(38);
+		assertEquals(1, avl.size());
+		assertArrayEquals(new Integer[] { 11 }, avl.preOrder());
+		
+		avl.remove(11);
+		assertEquals(0, avl.size());
+		assertArrayEquals(new Integer[] {  }, avl.preOrder());
+				
 	}
 }

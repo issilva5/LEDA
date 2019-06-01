@@ -379,7 +379,7 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 	}
 	
 	
-	private int exitDegree(BSTNode<T> node) {
+	protected int exitDegree(BSTNode<T> node) {
 		
 		int exitDegree = 0;
 		
@@ -399,7 +399,7 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 		
 	}
 	
-	private int sideOfNode(BSTNode<T> node) {
+	protected int sideOfNode(BSTNode<T> node) {
 		
 		int side = 0;
 		
