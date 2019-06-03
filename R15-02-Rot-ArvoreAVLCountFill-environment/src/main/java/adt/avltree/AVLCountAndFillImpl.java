@@ -1,5 +1,7 @@
 package adt.avltree;
 
+import adt.bst.BSTNode;
+
 public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 		AVLTreeImpl<T> implements AVLCountAndFill<T> {
 
@@ -31,11 +33,82 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 	public int RLcount() {
 		return RLcounter;
 	}
-
+	
+	@Override
+	protected void rebalance(BSTNode<T> node) {
+		
+		int balance = this.calculateBalance(node);
+		
+		if (balance < -1) {
+			
+			int balanceLeft = this.calculateBalance((BSTNode<T>) node.getLeft());
+			
+			if (balanceLeft > 0) {
+				
+				this.leftRotation((BSTNode<T>) node.getLeft());
+				this.LRcounter++;
+			}
+			
+			this.rightRotation(node);
+			this.RRcounter++;
+			
+		} else if (balance > 1) {
+			
+			int balanceRight = this.calculateBalance((BSTNode<T>) node.getRight());
+			
+			if (balanceRight < 0) {
+				
+				this.rightRotation((BSTNode<T>) node.getRight());
+				this.RLcounter++;
+			}
+			
+			this.leftRotation(node);
+			this.LLcounter++;
+			
+		}
+		
+	}
+	
 	@Override
 	public void fillWithoutRebalance(T[] array) {
-		// TODO Auto-generated method stub
-		throw new UnsupportedOperationException("Not implemented yet!");
+		
+		T[] orderedArray = this.mergeSort(array);
+		
+		int maxPot = (int) Math.floor(Math.log10(array.length)/Math.log10(2));
+		
+		int[] visited = new int[array.length];
+		
+		for (int i = 1; i <= maxPot; i++) {
+			
+			double pot2 = Math.pow(2, i);
+			int cont = 1, pos = 0;
+			
+			do {
+				
+				pos = (int) Math.floor(cont * array.length / pot2); 
+				cont++;
+				
+				if (visited[pos] == 0) {
+					this.insert(orderedArray[pos]);
+					visited[pos] = 1;
+				}
+				
+			} while (pos < array.length);
+			
+		}
+	
+	}
+	
+	private T[] mergeSort(T[] array) {
+		//TODO
+		return null;
+		
+	}
+	
+	private T[] merge(T[] array) {
+		//TODO
+		return null;
+		
 	}
 
 }
