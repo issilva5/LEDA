@@ -127,5 +127,26 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 		}
 	
 	}
+	
+	/*
+	 * ALTERNATIVE APPROACH FOR fillWithoutRebalance
+	 * 
+	 * Create a empty queue (Q for this example), or a data structure able to simulate its behavior.
+	 * This queue should store the data as a Pair(a, b).
+	 * 
+	 * Insert in the queue the first pair [0, array.length - 1]. The extremes of the array interval.
+	 * Now, do the following routine:
+	 * 
+	 * while Q is not empty:
+	 * 		mid := (Q.front().val1 + Q.front().val2)/2
+	 *  	AVL.insert(array[mid])
+	 *  	Q.add([Q.front().val1, mid - 1])
+	 *  	Q.add([mid + 1, Q.front().val2])
+	 *  	Q.removeFront()
+	 * 
+	 * Some additional conditions must be added to the routine, checking the bounds of the array.
+	 * This approach as the implemented one is based in the fact that for avoid rotations, we need to fill
+	 * the tree level by level. For this, we need to add always the mid of subintervals.
+	 */
 
 }
