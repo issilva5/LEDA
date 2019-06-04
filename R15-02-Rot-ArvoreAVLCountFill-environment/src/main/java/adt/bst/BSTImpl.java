@@ -519,6 +519,16 @@ public class BSTImpl<T extends Comparable<T>> implements BST<T> {
 		}
 		
 	}
+	
+	protected void clear() {
+		
+		while (!this.isEmpty()) {
+			
+			this.remove(this.root.getData());
+			
+		}
+		
+	}
 
 	/**
 	 * This method is already implemented using recursion. You must understand

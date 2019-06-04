@@ -50,10 +50,10 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 				this.rightRotation(node);
 				this.LRcounter++;
 				
-			} else {
+			} else if (balanceLeft < 0) {
 			
 				this.rightRotation(node);
-				this.RRcounter++;
+				this.LLcounter++;
 				
 			}
 			
@@ -67,10 +67,10 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 				this.leftRotation(node);
 				this.RLcounter++;
 				
-			} else {
-			
+			} else if (balanceRight > 0) {
+				
 				this.leftRotation(node);
-				this.LLcounter++;
+				this.RRcounter++;
 				
 			}
 			
@@ -79,10 +79,20 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 	}
 	
 	@Override
+	protected void clear() {
+		super.clear();
+		this.LLcounter = 0;
+		this.LRcounter = 0;
+		this.RRcounter = 0;
+		this.RLcounter = 0;
+	}
+	
+	@Override
 	public void fillWithoutRebalance(T[] array) {
 		
-		Arrays.sort(array);
+		this.clear();
 		
+		Arrays.sort(array);
 		int maxPot = (int) Math.floor(Math.log10(array.length)/Math.log10(2));
 		
 		int[] visited = new int[array.length];
@@ -90,11 +100,10 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 		for (int i = 1; i <= maxPot; i++) {
 			
 			double pot2 = Math.pow(2, i);
-			int cont = 1, pos = 0;
+			int cont = 1, pos = (int) Math.floor(cont * array.length / pot2);
 			
 			do {
-				
-				pos = (int) Math.floor(cont * array.length / pot2); 
+				 
 				cont++;
 				
 				if (visited[pos] == 0) {
@@ -102,15 +111,17 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 					visited[pos] = 1;
 				}
 				
+				pos = (int) Math.floor(cont * array.length / pot2);
+				
 			} while (pos < array.length);
 			
 		}
 		
 		for (int i = 0; i < array.length; i++) {
 			
-			if (visited[pos] == 0) {
-				this.insert(array[pos]);
-				visited[pos] = 1;
+			if (visited[i] == 0) {
+				this.insert(array[i]);
+				visited[i] = 1;
 			}
 			
 		}

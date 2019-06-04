@@ -2,6 +2,8 @@ package adt.avltree;
 
 import static org.junit.Assert.*;
 
+import java.util.Arrays;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -60,6 +62,27 @@ public class StudentTestAVLCountAndFill {
 		tree1 = new AVLCountAndFillImpl<Integer>();
 		Integer[] keys = { 8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15 };
 		tree1.fillWithoutRebalance(keys);
+		assertEquals(0, tree1.LLcount());
+		assertEquals(0, tree1.RRcount());
+		assertEquals(0, tree1.LRcount());
+		assertEquals(0, tree1.RLcount());
+		//tree1 = new AVLCountAndFillImpl<Integer>();
+		Integer[] keys2 = { 8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15, 20 };
+		tree1.fillWithoutRebalance(keys2);
+		assertEquals(0, tree1.LLcount());
+		assertEquals(0, tree1.RRcount());
+		assertEquals(0, tree1.LRcount());
+		assertEquals(0, tree1.RLcount());
+		//tree1 = new AVLCountAndFillImpl<Integer>();
+		Integer[] keys3 = { 1 };
+		tree1.fillWithoutRebalance(keys3);
+		assertEquals(0, tree1.LLcount());
+		assertEquals(0, tree1.RRcount());
+		assertEquals(0, tree1.LRcount());
+		assertEquals(0, tree1.RLcount());
+		//tree1 = new AVLCountAndFillImpl<Integer>();
+		Integer[] keys4 = { 1, 6, 8, 745, 654, 351, 3564, 987, 65, 34 };
+		tree1.fillWithoutRebalance(keys4);
 		assertEquals(0, tree1.LLcount());
 		assertEquals(0, tree1.RRcount());
 		assertEquals(0, tree1.LRcount());
