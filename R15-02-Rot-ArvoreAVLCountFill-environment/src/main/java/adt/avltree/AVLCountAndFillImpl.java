@@ -1,6 +1,7 @@
 package adt.avltree;
 
 import adt.bst.BSTNode;
+import java.util.Arrays;
 
 public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 		AVLTreeImpl<T> implements AVLCountAndFill<T> {
@@ -46,11 +47,15 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 			if (balanceLeft > 0) {
 				
 				this.leftRotation((BSTNode<T>) node.getLeft());
+				this.rightRotation(node);
 				this.LRcounter++;
-			}
+				
+			} else {
 			
-			this.rightRotation(node);
-			this.RRcounter++;
+				this.rightRotation(node);
+				this.RRcounter++;
+				
+			}
 			
 		} else if (balance > 1) {
 			
@@ -59,11 +64,15 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 			if (balanceRight < 0) {
 				
 				this.rightRotation((BSTNode<T>) node.getRight());
+				this.leftRotation(node);
 				this.RLcounter++;
-			}
+				
+			} else {
 			
-			this.leftRotation(node);
-			this.LLcounter++;
+				this.leftRotation(node);
+				this.LLcounter++;
+				
+			}
 			
 		}
 		
@@ -72,7 +81,7 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 	@Override
 	public void fillWithoutRebalance(T[] array) {
 		
-		T[] orderedArray = this.mergeSort(array);
+		Arrays.sort(array);
 		
 		int maxPot = (int) Math.floor(Math.log10(array.length)/Math.log10(2));
 		
@@ -89,26 +98,23 @@ public class AVLCountAndFillImpl<T extends Comparable<T>> extends
 				cont++;
 				
 				if (visited[pos] == 0) {
-					this.insert(orderedArray[pos]);
+					this.insert(array[pos]);
 					visited[pos] = 1;
 				}
 				
 			} while (pos < array.length);
 			
 		}
-	
-	}
-	
-	private T[] mergeSort(T[] array) {
-		//TODO
-		return null;
 		
-	}
+		for (int i = 0; i < array.length; i++) {
+			
+			if (visited[pos] == 0) {
+				this.insert(array[pos]);
+				visited[pos] = 1;
+			}
+			
+		}
 	
-	private T[] merge(T[] array) {
-		//TODO
-		return null;
-		
 	}
 
 }
