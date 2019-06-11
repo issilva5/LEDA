@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-06-10T19:38:52.823-0300</date>
+  <logger>ITALLO DE SOUSA SILVA</logger>
+  <level>FINE</level>
+  <message>File 118110718-ITALLO DE SOUSA SILVA.zip was received. It was sent by ITALLO DE SOUSA SILVA from IP 192.168.0.25 at 10-06-2019 19*38*52</message>
+</record>
+</log>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2019-06-10T22:18:57.907-0300</date>
+  <logger>ITALLO DE SOUSA SILVA</logger>
+  <level>FINE</level>
+  <message>File 118110718-ITALLO DE SOUSA SILVA.zip was received. It was sent by ITALLO DE SOUSA SILVA from IP 192.168.0.25 at 10-06-2019 22*18*57</message>
+</record>
